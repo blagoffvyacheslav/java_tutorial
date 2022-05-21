@@ -4,9 +4,9 @@ public class ATM {
 
     private final int TWENTY = 20;
     private final int FIFTY = 50;
-    private final int ONE_HUNGRED = 100;
+    private final int ONE_HUNDRED = 100;
 
-    int[] Banknotes = {ONE_HUNGRED, FIFTY, TWENTY};
+    int[] Banknotes = {ONE_HUNDRED, FIFTY, TWENTY};
 
     private int twentyNominationQuantity;
     private int fiftyNominationQuantity;
@@ -58,7 +58,7 @@ public class ATM {
         return switch (nomination) {
             case TWENTY -> this.getTwentyNominationQuantity();
             case FIFTY -> this.getFiftyNominationQuantity();
-            case ONE_HUNGRED -> this.getOneHundredNominationQuantity();
+            case ONE_HUNDRED -> this.getOneHundredNominationQuantity();
             default -> 0;
         };
     }
@@ -67,17 +67,16 @@ public class ATM {
         switch (nomination) {
             case TWENTY -> this.setTwentyNominationQuantity(value);
             case FIFTY -> this.setFiftyNominationQuantity(value);
-            case ONE_HUNGRED -> this.setOneHundredNominationQuantity(value);
+            case ONE_HUNDRED -> this.setOneHundredNominationQuantity(value);
             default -> {
             }
         }
-        ;
     }
 
     private int getCurrentSum() {
         int twenty = this.getTwentyNominationQuantity() * TWENTY;
         int fifty = this.getFiftyNominationQuantity() * FIFTY;
-        int oneHundred = this.getOneHundredNominationQuantity() * ONE_HUNGRED;
+        int oneHundred = this.getOneHundredNominationQuantity() * ONE_HUNDRED;
         return twenty + fifty + oneHundred;
     }
 
