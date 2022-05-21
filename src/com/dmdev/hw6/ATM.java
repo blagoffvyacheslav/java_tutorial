@@ -56,18 +56,18 @@ public class ATM {
 
     private int getNominationQuantity(int nomination) {
         return switch (nomination) {
-            case 20 -> this.getTwentyNominationQuantity();
-            case 50 -> this.getFiftyNominationQuantity();
-            case 100 -> this.getOneHundredNominationQuantity();
+            case TWENTY -> this.getTwentyNominationQuantity();
+            case FIFTY -> this.getFiftyNominationQuantity();
+            case ONE_HUNGRED -> this.getOneHundredNominationQuantity();
             default -> 0;
         };
     }
 
     private void setNominationQuantity(int nomination, int value) {
         switch (nomination) {
-            case 20 -> this.setTwentyNominationQuantity(value);
-            case 50 -> this.setFiftyNominationQuantity(value);
-            case 100 -> this.setOneHundredNominationQuantity(value);
+            case TWENTY -> this.setTwentyNominationQuantity(value);
+            case FIFTY -> this.setFiftyNominationQuantity(value);
+            case ONE_HUNGRED -> this.setOneHundredNominationQuantity(value);
             default -> {
             }
         }
@@ -75,7 +75,10 @@ public class ATM {
     }
 
     private int getCurrentSum() {
-        return this.getTwentyNominationQuantity() * 20 + this.getFiftyNominationQuantity() * 50 + this.getOneHundredNominationQuantity() * 100;
+        int twenty = this.getTwentyNominationQuantity() * TWENTY;
+        int fifty = this.getFiftyNominationQuantity() * FIFTY;
+        int oneHundred = this.getOneHundredNominationQuantity() * ONE_HUNGRED;
+        return twenty + fifty + oneHundred;
     }
 
     public boolean withdrawMoney(int withdrawSum) {
