@@ -48,17 +48,18 @@ public class ATM {
 
     public void putMoney(int inputTwentyNominationQuantity, int inputFiftyNominationQuantity,
                          int inputOneHundredNominationQuantity) {
-        this.setTwentyNominationQuantity(this.getTwentyNominationQuantity() + inputTwentyNominationQuantity);
-        this.setFiftyNominationQuantity(this.getFiftyNominationQuantity() + inputFiftyNominationQuantity);
-        this.setOneHundredNominationQuantity(this.getOneHundredNominationQuantity() + inputOneHundredNominationQuantity);
+
+        twentyNominationQuantity+=inputTwentyNominationQuantity;
+        fiftyNominationQuantity+=inputFiftyNominationQuantity;
+        oneHundredNominationQuantity+=inputOneHundredNominationQuantity;
     }
 
 
     private int getNominationQuantity(int nomination) {
         return switch (nomination) {
-            case TWENTY -> this.getTwentyNominationQuantity();
-            case FIFTY -> this.getFiftyNominationQuantity();
-            case ONE_HUNDRED -> this.getOneHundredNominationQuantity();
+            case TWENTY -> twentyNominationQuantity;
+            case FIFTY -> fiftyNominationQuantity;
+            case ONE_HUNDRED -> oneHundredNominationQuantity;
             default -> 0;
         };
     }
@@ -74,9 +75,9 @@ public class ATM {
     }
 
     private int getCurrentSum() {
-        int twenty = this.getTwentyNominationQuantity() * TWENTY;
-        int fifty = this.getFiftyNominationQuantity() * FIFTY;
-        int oneHundred = this.getOneHundredNominationQuantity() * ONE_HUNDRED;
+        int twenty = twentyNominationQuantity * TWENTY;
+        int fifty = fiftyNominationQuantity * FIFTY;
+        int oneHundred = oneHundredNominationQuantity * ONE_HUNDRED;
         return twenty + fifty + oneHundred;
     }
 
