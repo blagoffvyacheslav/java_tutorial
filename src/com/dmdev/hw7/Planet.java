@@ -49,6 +49,7 @@ public class Planet extends SpaceObject implements WithSatellite {
 
 
     public Planet(double weight, String name, double circumference, Satellite[] satelittes) {
+        super(circumference);
         this.weight = weight;
         this.name = name;
         this.circumference = circumference;

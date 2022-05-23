@@ -34,6 +34,7 @@ public class Satellite extends SpaceObject {
     }
 
     public Satellite(double weight, String name, double circumference) {
+        super(circumference);
         this.weight = weight;
         this.name = name;
         this.circumference = circumference;

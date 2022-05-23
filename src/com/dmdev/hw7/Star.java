@@ -51,6 +51,7 @@ public class Star extends SpaceObject implements WithSatellite {
     }
 
     public Star(double weight, String name, double circumference, Satellite[] satelittes, Planet[] planets) {
+        super(circumference);
         this.weight = weight;
         this.name = name;
         this.circumference = circumference;

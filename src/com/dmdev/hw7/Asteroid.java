@@ -34,6 +34,7 @@ public class Asteroid extends SpaceObject {
     }
 
     public Asteroid(double weight, double circumference, String name) {
+        super(circumference);
         this.weight = weight;
         this.circumference = circumference;
         this.name = name;
