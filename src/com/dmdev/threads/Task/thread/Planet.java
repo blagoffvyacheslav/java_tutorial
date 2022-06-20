@@ -9,9 +9,18 @@ public class Planet extends Thread {
 
     private static final int MIN_CRYSTAL_NUM = 2;
     private static final int MAX_CRYSTAL_NUM = 5;
+
+    boolean stop = true;
+
     private final Dump dump;
 
     private final Midnight midnight;
+
+    public void planetStop(){
+        stop = false;
+        Thread.currentThread().interrupt();
+
+    }
 
     public Planet(Dump dump, Midnight midnight) {
         this.dump = dump;
@@ -22,14 +31,11 @@ public class Planet extends Thread {
     @Override
     public void run() {
         try {
-            while(true) {
+            while(stop) {
                 throwNewCrystalls();
                 waitNextMidnight();
             }
         } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
-        catch(Exception e){
             e.printStackTrace();
         }
     }

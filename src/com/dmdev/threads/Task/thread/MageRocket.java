@@ -38,8 +38,8 @@ public class MageRocket extends Thread {
                 int redCrystallsNum = Optional.ofNullable(currentCrystals.get(CrystalItem.RED)).orElse(0);
 
                 if (whiteCrystallsNum >= CompetitionConst.AMOUNT_OF_CRYSTALLS && redCrystallsNum >= CompetitionConst.AMOUNT_OF_CRYSTALLS) {
-                    planet.interrupt();
-                    midnight.interrupt();
+                    planet.planetStop();
+                    midnight.midNightStop();
                     break;
                 } else {
                     waitNextMidnight();
