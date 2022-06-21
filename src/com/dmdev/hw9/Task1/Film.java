@@ -1,5 +1,7 @@
 package com.dmdev.hw9.Task1;
 
+import java.util.Objects;
+
 public class Film {
     private final int id;
     private final int year;
@@ -45,5 +47,18 @@ public class Film {
                 ", genre=" + genre +
                 ", rating=" + rating +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Film film = (Film) o;
+        return id == film.id && year == film.year && month == film.month && Double.compare(film.rating, rating) == 0 && genre == film.genre;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, year, month, genre, rating);
     }
 }
