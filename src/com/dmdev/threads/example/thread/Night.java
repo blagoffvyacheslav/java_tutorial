@@ -1,28 +1,23 @@
-package com.dmdev.threads.Task.thread;
+package com.dmdev.threads.example.thread;
 
-import com.dmdev.threads.Task.util.MidnightConst;
+import com.dmdev.threads.example.util.NightConst;
 
-
-public class Midnight extends Thread {
-
-    volatile boolean stop = true;
+public class Night extends Thread {
 
     private final Object lock = new Object();
 
     @Override
     public void run() {
-        int i = 0;
-        while (stop) {
+        for (int i = 0; i < NightConst.AMOUNT_OF_NIGHT; i++) {
             synchronized (lock) {
                 try {
-                    System.out.printf("----------------\nMidnight %s started\n", (i + 1));
+                    System.out.printf("----------------\nNight %s started\n", (i + 1));
                     lock.notifyAll();
-                    lock.wait(MidnightConst.MIDNIGHT_INTERVAL);
+                    lock.wait(NightConst.NIGHT_INTERVAL);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
-            i++;
         }
         synchronized (lock) {
             lock.notifyAll();

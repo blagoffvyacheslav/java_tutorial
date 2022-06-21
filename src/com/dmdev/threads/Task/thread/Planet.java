@@ -16,9 +16,8 @@ public class Planet extends Thread {
 
     private final Midnight midnight;
 
-    public void planetStop(){
+    public void planetStop() {
         stop = false;
-        Thread.currentThread().interrupt();
 
     }
 
@@ -31,7 +30,7 @@ public class Planet extends Thread {
     @Override
     public void run() {
         try {
-            while(stop) {
+            while (midnight.stop) {
                 throwNewCrystalls();
                 waitNextMidnight();
             }

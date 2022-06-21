@@ -7,18 +7,17 @@ import com.dmdev.threads.Task.thread.Planet;
 import com.dmdev.threads.Task.thread.Midnight;
 import com.dmdev.threads.Task.util.ThreadUtil;
 
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-
 public class Demo {
 
     public static void main(String[] args) throws InterruptedException {
         Dump dump = new Dump();
+        Mage firebender = new Mage("Firebender");
+        Mage airbender = new Mage("Airbender");
         Midnight midnight = new Midnight();
         Planet planet = new Planet(dump, midnight);
-        MageRocket firebenderRocket = new MageRocket(new Mage("Firebender"), planet, midnight);
-        MageRocket airbenderRocket = new MageRocket(new Mage("Airbender"), planet, midnight);
+
+        MageRocket firebenderRocket = new MageRocket(firebender, planet.getDump(), midnight);
+        MageRocket airbenderRocket = new MageRocket(airbender, planet.getDump(), midnight);
 
         ThreadUtil.startThreads(midnight, planet, firebenderRocket, airbenderRocket);
         ThreadUtil.joinThreads(midnight, planet, firebenderRocket, airbenderRocket);
