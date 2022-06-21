@@ -2,21 +2,17 @@ package com.dmdev.threads.Task.thread;
 
 import com.dmdev.threads.Task.util.MidnightConst;
 
+
 public class Midnight extends Thread {
 
-    boolean stop = true;
+    volatile boolean stop = true;
 
     private final Object lock = new Object();
-
-    public void midNightStop(){
-        stop = false;
-        Thread.currentThread().interrupt();
-    }
 
     @Override
     public void run() {
         int i = 0;
-        while(stop){
+        while (stop) {
             synchronized (lock) {
                 try {
                     System.out.printf("----------------\nMidnight %s started\n", (i + 1));
